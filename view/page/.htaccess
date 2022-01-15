@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+ErrorDocument 401 http://blog//view/page/error
+ErrorDocument 403 http://blog//view/page/error
+ErrorDocument 404 http://blog//view/page/error
+ErrorDocument 500 http://blog//view/page/error
