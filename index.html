@@ -1,12 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>Blog</title>
 </head>
 <body>
-    
+    <div class="wrapper">
+        <header>
+            <!-- <?
+                require_once '../block/header.php';
+            ?> -->
+        </header>
+
+        <main>
+            <div class="container main__container">
+
+                <section class="post">
+
+                    <div class="post__search">
+                        <!-- <?
+                            require_once '../block/postSearch.php';
+                        ?> -->
+                    </div>
+
+                    <div class="article-container">
+                        <!-- <?
+                            require_once '../block/articles.php';
+                        ?> -->
+                    </div>
+
+                    <!-- Нижняя навигация -->
+                    <nav class="styleBlock">
+                        <ul class="bottom-article__navigation">
+                            <!-- <?
+                                require_once '../block/articleNavigation.php';
+                            ?> -->
+                        <ul>
+                    </nav>
+
+                </section>
+
+                <aside id="test" class="recommendation styleBlock" v-bind:title="msg">
+                    <!-- <?
+                        require_once '../block/aside.php';
+                    ?> -->
+                    {{ msg }}
+                </aside>
+            </div>
+
+        </main>
+    </div>
+    <script type="module" src="js/index.js"></script>
 </body>
 </html>

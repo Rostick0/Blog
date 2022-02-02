@@ -16,7 +16,7 @@ class User {
 
     public static function getUserById($id) {
         global $connect;
-        $query = mysqli_query($connect, "SELECT * FROM `user` WHERE `id_user` = '$id'");
+        $query = mysqli_query($connect, "SELECT * FROM `user` LEFT OUTER JOIN `user-info` ON `user`.`id_user` = `user-info`.`user_id` WHERE `user`.`id_user` = '{$id}'");
         $data = mysqli_fetch_assoc($query);
         return $data;
     }

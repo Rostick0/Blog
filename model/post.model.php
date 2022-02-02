@@ -46,6 +46,11 @@ class Post {
         mysqli_query($connect, "DELETE FROM `view` WHERE `post_id` = '$id_post'");
         mysqli_query($connect, "DELETE FROM `post` WHERE `id_post` = '$id_post' AND `user_id` = '$user_id'");
     }
+
+    public static function editPost($id_post, $title, $text, $img) {
+        global $connect;
+        return mysqli_query($connect, "UPDATE `post` SET `title` = '$title', `text` = '$text', `img` = '$img', `data-update` = CURRENT_TIMESTAMP WHERE `id_post` = '$id_post'");
+    }
 }
 
 ?>

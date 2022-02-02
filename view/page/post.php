@@ -1,5 +1,5 @@
 <?
-require_once '../../controller/session.model.php';
+require_once '../../controller/session.controller.php';
 require_once '../../controller/post.controller.php';
 require_once '../../model/post.model.php';
 require_once '../../include/connect.php';
@@ -54,6 +54,10 @@ viewController($url_id);
                         <div>
                             <div class="selected-post__date">
                                 <?
+                                    if ($posts['date'] != $posts['date-update']) {
+                                        echo '<p>Редактирован ' . $posts['date-update'] . '</p>';
+                                    }
+
                                     echo $posts['date'];
                                 ?>
                             </div>
@@ -73,7 +77,9 @@ viewController($url_id);
                         <?
                             if ($posts['id_user'] === $_SESSION['user']['id_user']) {
                                 echo '<form class="selected-post__form-edit" action="#" method="POST">
-                                        <button name="edit_post">Изменить</button>
+                                        <button>
+                                            <a href="./editPost?id=' . $url_id . '">Изменить</a>
+                                        </button>
                                         <button name="delete_post">Удалить</button>
                                     </form>';
                             }

@@ -1,12 +1,16 @@
 <?
-require_once '../../controller/session.model.php';
+require_once '../../controller/session.controller.php';
 require_once '../../include/connect.php';
 require_once '../../model/user.model.php';
+require_once '../../controller/online.controller.php';
 
-$user = User::getUserById($_GET['id'] + 0);
+$user = User::getUserById((integer) $_GET['id']);
 
-var_dump($user);
+if (!$user) {
+    header("Location: ./error");
+}
 
+// var_dump($user);
 ?>
 
 <!DOCTYPE html>
@@ -38,27 +42,51 @@ var_dump($user);
                             <?
                                 echo $user['login'];
                             ?>
-                            <p>
+                            <p class="profile__online">
                                 <?
-                                    echo time();
-                                    echo "<br/>";
-                                    echo $user['login'];
+                                    echo $user['last_online'];
                                 ?>
                             </p>
                         </h3>
                         <div class="profile__description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. In vel nulla, at id, praesentium architecto voluptates hic dolores porro odio recusandae iure, sit nemo maiores laboriosam. Doloribus, cumque? Ipsam, illum!
+                            <?
+                                echo $user['description'];
+                            ?>
                         </div>
                         <ul class="profile__short-info">
                             <li class="profile__short-info_item">
                                 <p>Количество друзей:</p>
-                                <p>10</p>
+                                <p>
+                                    <?
+                                        echo $user['count_friend'];
+                                    ?>
+                                </p>
                             </li>
                             <li class="profile__short-info_item">
                                 <p>Количество постов:</p>
-                                <p>10</p>
+                                <p>
+                                    <?
+                                        echo $user['count_post'];
+                                    ?>
+                                </p>
                             </li>
                         </ul>
+                        <form method="POST" class="profile__interaction">
+                            <?
+                                if ($_SESSION['user']['id_user'] === $user['id_user']) {
+                                    echo '
+                                        <button class="profile__interaction_button" name="profile_setting">
+                                            <a href="./editProfile">Настройки</a>
+                                        </button>
+                                        ';
+                                } else {
+                                    echo '
+                                        <button class="profile__interaction_button" name="write_letter">Написать сообщение</button>
+                                        <button class="profile__interaction_button" name="add_frined">Добавить в друзья</button>
+                                        ';
+                                }
+                            ?>
+                        </form>
                     </div>
                 </section>
 

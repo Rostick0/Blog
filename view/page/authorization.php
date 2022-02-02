@@ -1,5 +1,5 @@
 <?
-require_once '../../controller/session.model.php';
+require_once '../../controller/session.controller.php';
 require_once '../../include/connect.php';
 require_once '../../model/user.model.php';
 if ($_SESSION['user']['login']) {

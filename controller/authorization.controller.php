@@ -2,10 +2,16 @@
 
 require_once '../../model/user.model.php';
 
-$login = addslashes(htmlspecialchars($_REQUEST['login']));
-$password = addslashes(htmlspecialchars($_REQUEST['password']));
-$email = addslashes(htmlspecialchars($_REQUEST['email']));
-$avatar = ($_FILES['avatar']);
+if (isset($_REQUEST['do_registration']) || isset($_REQUEST['do_log'])) {
+    $_SESSION['authorization']['login'] = addslashes(htmlspecialchars($_REQUEST['login']));
+    $_SESSION['authorization']['password'] = addslashes(htmlspecialchars($_REQUEST['password']));
+    $_SESSION['authorization']['email'] = addslashes(htmlspecialchars($_REQUEST['email']));
+}
+
+$login = $_SESSION['authorization']['login'];
+$password = $_SESSION['authorization']['password'];
+$email = $_SESSION['authorization']['email'];
+$avatar = null;
 
 $hashPassword = password_hash($password, PASSWORD_DEFAULT);
 
@@ -60,11 +66,11 @@ if (isset($_REQUEST['do_registration'])) {
         $_SESSION['errors']['authorization'][] = 'Пароль меньше 8 символов';
     }
 
-    if (!empty($avatar)) {
-        if ($avatar['type'] !== 'image/jpeg' && $avatar['type'] !== 'image/png' && $avatar['type'] !== "") {
-            $_SESSION['errors']['authorization'][] = 'Не поддерживается формат картинки';
-        }
-    }
+    // if (!empty($avatar)) {
+    //     if ($avatar['type'] !== 'image/jpeg' && $avatar['type'] !== 'image/png' && $avatar['type'] !== "") {
+    //         $_SESSION['errors']['authorization'][] = 'Не поддерживается формат картинки';
+    //     }
+    // }
 
     if (!empty($_SESSION['errors']['authorization'])) {
         echo '<p class="error-message">' . array_shift($_SESSION['errors']['authorization']) . '</p>';
@@ -102,13 +108,18 @@ if (isset($_REQUEST['do_confirm-email'])) {
 
         //     move_uploaded_file($avatar['tmp_name'], $path_avatar . $upload_img);
         // }
-
-        //User::addUser($login, $hashPassword, $email ,$upload_img);
-
-        $_SESSION['email_token'] = null;
+        $upload_img = 'no-img.png';
+        User::addUser($login, $hashPassword, $email ,$upload_img);
 
         echo '<p class="successful-message">Ваш аккаунт успешно зарегистрирован</p>';
+        
+        $_SESSION['email_token'] = null;
+        $_SESSION['errors']['authorization'] = null;
     }
+}
+
+if (isset($_REQUEST['dont_get_mail'])) {
+    $_SESSION['errors']['authorization'] = null;
 }
 
 if (isset($_REQUEST['transition_registration'])) {

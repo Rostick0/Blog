@@ -48,12 +48,41 @@ if (isset($_REQUEST['create-button'])) {
     }
 }
 
-function deletePost($posts) {
-    Post::deletePost($posts['id_post'], $_SESSION['user']['id_user']);
-    if ($posts['img'] !== 'no-img.png') {
-        unlink('../../view/upload/' . $posts['img']);
+function deletePost($post) {
+    Post::deletePost($post['id_post'], $_SESSION['user']['id_user']);
+    if ($post['img'] !== 'no-img.png') {
+        unlink('../../view/upload/' . $post['img']);
     }
     header('Location: ./');
+}
+
+function updatePost($post) {
+    $title = addslashes(htmlspecialchars($_REQUEST['title']));
+    $text = addslashes(htmlspecialchars($_REQUEST['text']));
+    $img = $_FILES['img'];
+    $url_id = (int) $_GET['id'];
+
+    if ($_SESSION['user']['id_user'] === $post['id_user']) {
+        if ($img['name'] != '') {
+            if ($post['img'] != 'no-img.png') {
+                unlink('../../view/upload/' . $post['img']);
+            }
+
+            $path_img = '../upload/';
+            $upload_img = random_int(10000, 99999) . time() . '.png';
+
+            move_uploaded_file($_FILES['img']['tmp_name'], $path_img . $upload_img);
+        } else 
+        {
+            $upload_img = $post['img'];
+        }
+    
+        $query = Post::editPost($url_id, $title, $text, $upload_img);
+
+        if ($query) {
+            header("Location:  ./post?id=" . $url_id . "");
+        }
+    }
 }
 
 ?>

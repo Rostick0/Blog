@@ -6,6 +6,7 @@ if ($_SESSION['errors']['authorization'] === 'none') {
         </div>
         <div class="authorization__buttons">
                 <button name="do_confirm-email">Подтвердить</button>
+                <button name="dont_get_mail">Не пришло</button>
         </div>';
 } else {
     echo '<div class="authorization__input">
@@ -20,14 +21,7 @@ if ($_SESSION['errors']['authorization'] === 'none') {
             <label for="password">Пароль</label>
             <input type="password" id="password" name="password">
         </div>
-        <div>
-            <label for="img">
-                <p class="imgButton">
-                    <span class="inputFileText">Загрузка вашей фотографии</span>
-                    <input class="inputFile" type="file" id="img" name="avatar" name="avatar">
-                </p>
-            </label>
-        </div>
+        
         <div class="authorization__buttons">
             <button name="do_registration">Зарегистрироваться</button>
             <button name="transition_log">Войти</button>
@@ -35,3 +29,11 @@ if ($_SESSION['errors']['authorization'] === 'none') {
 }
 ?>
 
+<!-- <div>
+            <label for="img">
+                <p class="imgButton">
+                    <span class="inputFileText">Загрузка вашей фотографии</span>
+                    <input class="inputFile" type="file" id="img" name="avatar" name="avatar">
+                </p>
+            </label>
+        </div> -->

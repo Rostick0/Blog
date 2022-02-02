@@ -5,7 +5,7 @@ if ($_SESSION['user']) {
             <button id="add_comment" name="add_comment">Отправить</button>
         </form>';
 } else {
-    echo '<p>
+    echo '<p class="error-message">
         <strong>
             Добавление комментариев доступно только авторизованным пользователям
         </strong>
