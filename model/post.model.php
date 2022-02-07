@@ -14,16 +14,16 @@ class Post {
     public static function searchPosts($method, $title, $num) {
         global $connect;
         if ($method === 'title') {
-            $query = mysqli_query($connect, "SELECT * FROM `post` WHERE `title` LIKE '%$title%' ORDER BY `$method` LIMIT $num, 10");
+            $query = mysqli_query($connect, "SELECT * FROM `post` WHERE `title` LIKE '%$title%' UNION SELECT * FROM `post` WHERE `text` LIKE '%$title%' ORDER BY `$method` DESC LIMIT $num, 10");
         } else {
-            $query = mysqli_query($connect, "SELECT * FROM `post` WHERE `title` LIKE '%$title%' ORDER BY `$method` DESC LIMIT $num, 10");
+            $query = mysqli_query($connect, "SELECT * FROM `post` WHERE `title` LIKE '%$title%' UNION SELECT * FROM `post` WHERE `text` LIKE '%$title%' ORDER BY `$method` DESC LIMIT $num, 10");
         }
         return $query;
     }
 
     public static function searchPostsCount($title) {
         global $connect;
-        $query = mysqli_query($connect, "SELECT COUNT(*) FROM `post` WHERE `title` LIKE '%$title%'");
+        $query = mysqli_query($connect, "SELECT COUNT(*) FROM `post` WHERE `title` LIKE '%$title%' OR `text` LIKE '%$title%'");
         $data = mysqli_fetch_assoc($query);
         return $data["COUNT(*)"];
     }

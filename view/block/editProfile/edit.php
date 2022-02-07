@@ -13,10 +13,9 @@
                                 ?>
                             </h3>
                             <div class="edit-profile__data">
-                                <div class="edit-profile__email">
-                                    <p>Почта</p>
-                                    <input name="user_edit-email" value="<?echo $user['email'];?>">
-                                </div>
+                                <?
+                                    require_once '../../controller/editProfile.controller.php';
+                                ?>
                                 <div class="edit-profile__description">
                                     <p>Описание</p>
                                     <textarea name="user_edit-description"><?echo $user['description'];?></textarea>

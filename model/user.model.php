@@ -38,6 +38,12 @@ class User {
         return $data['password'];
     }
 
+    public static function editUser($id_user, $avatar, $description) {
+        global $connect;
+        mysqli_query($connect, "UPDATE `user` SET `avatar`='$avatar' WHERE `id_user` = '$id_user'");
+        mysqli_query($connect, "UPDATE `user-info` SET `description`='$description' WHERE `user_id` = '$id_user'");
+    }
+
     public static function setCookie($login, $cookie) {
         global $connect;
         mysqli_query($connect, "UPDATE `user` SET `cookie` = '$cookie' WHERE `login` = '$login'");
