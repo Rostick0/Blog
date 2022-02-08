@@ -7,7 +7,6 @@
                 <? if ($_SESSION['user']['login']) {
                     echo '
                         <li class="header__navigation_item"><a href="create">Создать статью</a></li>
-                        <li class="header__navigation_item"><a href="">Сообщения</a></li>
                         <li class="header__navigation_item"><a href="profile?id=' . $_SESSION['user']['id_user'] . '">Профиль</a></li>
                         <li class="header__navigation_item"><a href="destroy.session">Выйти</a></li>
                         ';

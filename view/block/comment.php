@@ -9,7 +9,7 @@ foreach ($comments as $comment):
 
 <div class="comment">
     <div class="comment__item">
-        <a>
+        <a href="./profile?id=<? echo $comment['id_user'] ?>">
             <img class="comment__img" src="../upload/<? echo $comment['avatar']; ?>" alt="">
         </a>
         <div class="comment__content">

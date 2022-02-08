@@ -51,6 +51,13 @@ class Post {
         global $connect;
         return mysqli_query($connect, "UPDATE `post` SET `title` = '$title', `text` = '$text', `img` = '$img', `data-update` = CURRENT_TIMESTAMP WHERE `id_post` = '$id_post'");
     }
+
+    public static function countPosts($id_user) {
+        global $connect;
+        $query = mysqli_query($connect, "SELECT COUNT(*) FROM `post` WHERE `user_id` = '$id_user'");
+        $data = mysqli_fetch_assoc($query);
+        return $data["COUNT(*)"];
+    }
 }
 
 ?>

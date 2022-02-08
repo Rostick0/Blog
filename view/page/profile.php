@@ -2,6 +2,7 @@
 require_once '../../controller/session.controller.php';
 require_once '../../include/connect.php';
 require_once '../../model/user.model.php';
+require_once '../../model/post.model.php';
 require_once '../../controller/online.controller.php';
 
 $user = User::getUserById((integer) $_GET['id']);
@@ -51,18 +52,10 @@ if (!$user) {
                         </div>
                         <ul class="profile__short-info">
                             <li class="profile__short-info_item">
-                                <p>Количество друзей:</p>
-                                <p>
-                                    <?
-                                        echo $user['count_friend'];
-                                    ?>
-                                </p>
-                            </li>
-                            <li class="profile__short-info_item">
                                 <p>Количество постов:</p>
                                 <p>
                                     <?
-                                        echo $user['count_post'];
+                                        echo Post::countPosts($user['id_user']);
                                     ?>
                                 </p>
                             </li>
@@ -74,11 +67,6 @@ if (!$user) {
                                         <button class="profile__interaction_button" name="profile_setting">
                                             <a href="./editProfile">Настройки</a>
                                         </button>
-                                        ';
-                                } else {
-                                    echo '
-                                        <button class="profile__interaction_button" name="write_letter">Написать сообщение</button>
-                                        <button class="profile__interaction_button" name="add_frined">Добавить в друзья</button>
                                         ';
                                 }
                             ?>

@@ -1,3 +1,3 @@
 <?
-// header('Location: /view/page/');
+header('Location: /view/page/');
 ?>
