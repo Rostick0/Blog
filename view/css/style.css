@@ -280,25 +280,15 @@ section {
 }
 
 .article-container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1rem 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
 
     word-break: break-word;
 }
 
-.article-container article {
-    -webkit-box-flex: 1;
-        -ms-flex: 1 0 45%;
-            flex: 1 0 45%;
-
-    max-width: 50%;
-
-    margin-right: 1rem;
-    margin-bottom: 1rem;
-}
 
 .article-container article:nth-child(2n+2) {
     margin-right: 0;
@@ -373,10 +363,6 @@ section {
 
 .selected-post > *:nth-child(1) {
     margin-bottom: 0.1rem;
-}
-
-.selected-post__comment {
-    
 }
 
 .selected-post__short-info {

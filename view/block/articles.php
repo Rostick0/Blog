@@ -16,7 +16,7 @@ if (mysqli_num_rows($posts) === 0) {
         ?>
         <article class="styleBlock">
             <a class="article__link" href="post?id=<? echo $post['id_post']; ?>">
-                <img class="article__img" src="../upload/<? echo $post['img']; ?>" alt="">
+                <img class="article__img img__lazy" loading="lazyy" src="data:image/gif;base64,R0lGODlhCAAFAIAAAP///wAAACH5BAEAAAEALAAAAAAIAAUAAAIFjI+py1gAOw==" data-src="../upload/<? echo $post['img']; ?>" alt="">
                 <div class="article__description">
                     <h3>
                         <? echo $post['title']; ?>

@@ -1,67 +1,28 @@
--- phpMyAdmin SQL Dump
--- version 5.1.0
--- https://www.phpmyadmin.net/
---
--- Хост: 127.0.0.1:3306
--- Время создания: Фев 08 2022 г., 17:13
--- Версия сервера: 8.0.24
--- Версия PHP: 7.4.21
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- База данных: `blog_test_db`
---
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `comment`
---
 
 CREATE TABLE `comment` (
   `id_comment` int NOT NULL,
   `post_id` int NOT NULL,
   `author_id` int NOT NULL,
   `text` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Дамп данных таблицы `comment`
---
+);
 
 INSERT INTO `comment` (`id_comment`, `post_id`, `author_id`, `text`) VALUES
 (67, 37, 14, 'w345'),
 (68, 45, 24, 'Оу');
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `post`
---
-
 CREATE TABLE `post` (
   `id_post` int NOT NULL,
   `title` varchar(255) NOT NULL,
-  `text` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'no-img.png',
+  `text` text NOT NULL,
+  `img` varchar(255) NOT NULL DEFAULT 'no-img.png',
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date-update` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` int NOT NULL,
   `view` int NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Дамп данных таблицы `post`
---
+);
 
 INSERT INTO `post` (`id_post`, `title`, `text`, `img`, `date`, `date-update`, `user_id`, `view`) VALUES
 (30, '2131221', '213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221213122121312212131221', 'no-img.png', '2022-01-07 19:27:18', '2022-01-07 19:27:18', 14, 1),
@@ -70,24 +31,14 @@ INSERT INTO `post` (`id_post`, `title`, `text`, `img`, `date`, `date-update`, `u
 (44, 'Вред от заводов', 'В наше время природа страдает очень сильно, на этом сыграло множество факторов. Человек благодаря производству наносит прямой удар природе, повышает количество выбросов CO2 в атмосферу\r\nВ наше время природа страдает очень сильно, на этом сыграло множество факторов. Человек благодаря производству наносит прямой удар природе, повышает количество выбросов CO2 в атмосферу\r\nВ наше время природа страдает очень сильно, на этом сыграло множество факторов. Человек благодаря производству наносит прямой удар природе, повышает количество выбросов CO2 в атмосферу\r\nВ наше время природа страдает очень сильно, на этом сыграло множество факторов. Человек благодаря производству наносит прямой удар природе, повышает количество выбросов CO2 в атмосферу\r\nВ наше время природа страдает очень сильно, на этом сыграло множество факторов. Человек благодаря производству наносит прямой удар природе, повышает количество выбросов CO2 в атмосферу\r\nВ наше время природа страдает очень сильно, на этом сыграло множество факторов. Человек благодаря производству наносит прямой удар природе, повышает количество выбросов CO2 в атмосферу', '409291641834327.png', '2022-01-10 20:05:27', '2022-01-10 20:05:27', 14, 1),
 (45, 'Засуха', 'Наверное каждый из нас слышал о глобальном потеплении, но никто не задумался насколько остро встала проблема в наше время. Множество факторов сыграли свою роль, выбросы газов CO2, горение леса, извержения вулканов, солнечная активность. Человечество сыграло огромную роль для повышения температуры\r\nНаверное каждый из нас слышал о глобальном потеплении, но никто не задумался насколько остро встала проблема в наше время. Множество факторов сыграли свою роль, выбросы газов CO2, горение леса, извержения вулканов, солнечная активность. Человечество сыграло огромную роль для повышения температуры\r\nНаверное каждый из нас слышал о глобальном потеплении, но никто не задумался насколько остро встала проблема в наше время. Множество факторов сыграли свою роль, выбросы газов CO2, горение леса, извержения вулканов, солнечная активность. Человечество сыграло огромную роль для повышения температуры', '838561643196665.png', '2022-01-10 20:08:20', '2022-01-26 15:18:40', 14, 4);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `user`
---
-
 CREATE TABLE `user` (
   `id_user` int NOT NULL,
   `login` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `cookie` varchar(255) DEFAULT NULL,
-  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'no-avatar.png'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Дамп данных таблицы `user`
---
+  `avatar` varchar(255) NOT NULL DEFAULT 'no-avatar.png'
+);
 
 INSERT INTO `user` (`id_user`, `login`, `password`, `email`, `cookie`, `avatar`) VALUES
 (1, 'user', '1', NULL, '[value-5]', 'no-avatar.png'),
@@ -115,22 +66,12 @@ INSERT INTO `user` (`id_user`, `login`, `password`, `email`, `cookie`, `avatar`)
 (41, 'testtest321321', '$2y$10$z9ccD4OgluTAFCAbOihTUu6vE.sT8ATvn0NiFxSzxmZ3oRaa2bVr2', 'rostik057@gmail.com', NULL, 'no-avatar.png'),
 (42, 'russian', '$2y$10$ABCJXqnPTJOJHV1bOYf0NeAPdxCnGfCcmzq3fN2XJMLWzY8E4F2UC', 'rostik057@gmail.com', '0e1270429b13379a5cccf64cee11a266', 'no-avatar.png');
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `user-info`
---
-
 CREATE TABLE `user-info` (
   `user_id` int NOT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `description` text,
   `date_registration` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `last_online` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Дамп данных таблицы `user-info`
---
+);
 
 INSERT INTO `user-info` (`user_id`, `description`, `date_registration`, `last_online`) VALUES
 (1, NULL, '2022-01-15 01:41:21', '2022-01-15 01:41:21'),
@@ -160,21 +101,11 @@ INSERT INTO `user-info` (`user_id`, `description`, `date_registration`, `last_on
 (41, NULL, '2022-01-22 17:55:27', '2022-01-22 17:55:27'),
 (42, NULL, '2022-01-26 18:11:39', '2022-01-26 18:12:06');
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `view`
---
-
 CREATE TABLE `view` (
   `id_view` bigint NOT NULL,
   `post_id` int NOT NULL,
   `user_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Дамп данных таблицы `view`
---
+);
 
 INSERT INTO `view` (`id_view`, `post_id`, `user_id`) VALUES
 (16, 37, 14),
@@ -197,79 +128,37 @@ INSERT INTO `view` (`id_view`, `post_id`, `user_id`) VALUES
 (43, 27, 14),
 (44, 35, 14);
 
---
--- Индексы сохранённых таблиц
---
-
---
--- Индексы таблицы `comment`
---
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`id_comment`),
   ADD KEY `author_id` (`author_id`),
   ADD KEY `post_id` (`post_id`);
 
---
--- Индексы таблицы `post`
---
 ALTER TABLE `post`
   ADD PRIMARY KEY (`id_post`);
 
---
--- Индексы таблицы `user`
---
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
---
--- Индексы таблицы `user-info`
---
 ALTER TABLE `user-info`
   ADD PRIMARY KEY (`user_id`);
 
---
--- Индексы таблицы `view`
---
 ALTER TABLE `view`
   ADD PRIMARY KEY (`id_view`),
   ADD KEY `post_id` (`post_id`),
   ADD KEY `user_id` (`user_id`);
 
---
--- AUTO_INCREMENT для сохранённых таблиц
---
-
---
--- AUTO_INCREMENT для таблицы `comment`
---
 ALTER TABLE `comment`
   MODIFY `id_comment` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
---
--- AUTO_INCREMENT для таблицы `post`
---
 ALTER TABLE `post`
   MODIFY `id_post` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
---
--- AUTO_INCREMENT для таблицы `user`
---
 ALTER TABLE `user`
   MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
---
--- AUTO_INCREMENT для таблицы `user-info`
---
 ALTER TABLE `user-info`
   MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
---
--- AUTO_INCREMENT для таблицы `view`
---
 ALTER TABLE `view`
   MODIFY `id_view` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

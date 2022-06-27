@@ -2,9 +2,9 @@
 
 $config = [
     'hostname' => 'localhost',
-    'username' => 'user',
-    'password' => '',
-    'database' => 'blog_test_db',
+    'username' => 'root',
+    'password' => 'root',
+    'database' => 'blog_first',
     //'database' => 'blog_db',
 ]
 
